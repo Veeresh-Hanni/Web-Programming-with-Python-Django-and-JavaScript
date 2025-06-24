@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <script>
+        // This is a simple JavaScript function to greet the user
+        function greet() {
+            // alert("Hello, World!");
+            const heading = document.querySelector('h1')
+            if (heading.innerHTML==="Hello!"){
+                heading.innerHTML="Good bye";
+            }else{
+                heading.innerHTML="Hello!";
+            }
+            
+            
+        }
+
+        // Call the greet function when the page loads
+        // window.onload = greet();
+        
+    </script>
+</head>
+<body>
+    <h1>Hello!</h1>
+    <p>This is a simple HTML page to demonstrate a basic structure.</p>
+    <button onclick="greet()">Click me</button>
+    <script src="./hello.js"></script>
+</body>
+</html>

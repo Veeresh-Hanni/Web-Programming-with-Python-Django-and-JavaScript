@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        p {
+            color: red;
+        }
+        i {
+    transition: transform 0.3s ease-in;
+}
+
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div>
+    <input type="text" placeholder="Full Name" id="full_name">
+    <p id="name_error"></p>
+    <input type="email" placeholder="Email" id="email">
+    <p id="email_error"></p>
+    
+        <input type="password" placeholder="Password" id="pass">
+    <i id="toggle_pass" class="fa-solid fa-eye" style="position: relative;"></i>
+    
+    <p id="pass_error"></p>
+    <input type="submit" id="sub" value="Submit">
+    </div>
+    <div>
+        Favourite Color?
+        <input type="radio" id="red" name="color" value="red">red
+        <input type="radio" id="green" name="color" value="green">green
+        <input type="radio" id="blue" name="color" value="blue">blue
+        <input type="radio" name="color" id="color" value="other">Other
+    </div>
+    <div>
+        <input type="text" name="country" list="countries" placeholder="Country">
+        <datalist id="countries">
+        <option value="India"></option>
+        <option value="USA"></option>
+        <option value="UK"></option>
+        <option value="Australia"></option>
+        <option value="Canada"></option>
+        </datalist>
+    </div>
+</body>
+<script>
+    const full_name = document.getElementById("full_name");
+    const email = document.getElementById("email");
+    const pass = document.getElementById("pass");
+    const submitButton = document.getElementById("sub");
+    const nameError = document.getElementById("name_error");
+    const emailError = document.getElementById("email_error");
+    const passError = document.getElementById("pass_error");
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    submitButton.addEventListener("click", (event) => {
+        let valid = true;
+        
+        // Clear previous error messages
+        nameError.textContent = "";
+        emailError.textContent = "";
+        passError.textContent = "";
+
+        if (full_name.value.trim() === "") {
+            nameError.textContent = "Please enter your full name";
+            valid = false;
+        }
+
+        if (email.value.trim() === "") {
+    emailError.textContent = "Please enter your email";
+    valid = false;
+} else if (!emailPattern.test(email.value)) {
+    emailError.textContent = "Invalid email address. Missing '@' or incorrect format.";
+    valid = false;
+}
+
+
+
+        if (pass.value.trim() === "") {
+            passError.textContent = "Please enter your password";
+            valid = false;
+        }
+
+        if (!valid) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+    const passwordField = document.getElementById("pass");
+    const toggleIcon = document.getElementById("toggle_pass");
+
+   
+    toggleIcon.addEventListener("click", () => {
+        if (passwordField.type === "password") {
+            passwordField.type = "text"; // Make password visible
+            toggleIcon.classList.remove("fa-eye-slash"); // Switch to "eye-slash" icon
+            toggleIcon.classList.add("fa-eye");
+        } else {
+            passwordField.type = "password"; // Hide the password
+            toggleIcon.classList.remove("fa-eye"); // Switch back to "eye" icon
+            toggleIcon.classList.add("fa-eye-slash");
+        }
+    });
+</script>
+</html>

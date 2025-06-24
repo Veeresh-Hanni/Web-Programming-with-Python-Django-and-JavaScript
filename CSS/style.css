@@ -1,0 +1,19 @@
+h1{
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    
+}
+body{
+    background-color: blue;
+}
+div{
+    background-color: aqua;
+    width: 100px;
+    height: 400px;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
