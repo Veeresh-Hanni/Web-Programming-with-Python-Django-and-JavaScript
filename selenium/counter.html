@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Counter with Sound</title>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let counter = 0;
+
+    const clickSound = new Audio("add.wav");
+    const clearSound = new Audio("clear.wav");
+
+
+
+
+    const updateDisplay = () => {
+        document.querySelector('h1').textContent = counter;
+    };
+
+    const getInputNumber = () => {
+        const input = document.querySelector("#num").value.trim();
+        const num = parseInt(input);
+        return isNaN(num) ? null : num;
+    };
+
+    document.querySelector("#increase").onclick = () => {
+        counter++;
+        updateDisplay();
+        clickSound.play();
+    };
+
+    document.querySelector("#decrease").onclick = () => {
+        if (counter > 0) counter--;
+        updateDisplay();
+        clickSound.play();
+    };
+
+    document.querySelector("#clear").onclick = () => {
+        if(counter > 0){ 
+            counter = 0;
+            updateDisplay();
+            clearSound.play();
+        }
+        
+    };
+
+    document.querySelector("#add-num").onclick = () => {
+        const num = getInputNumber();
+        if (num !== null) {
+            counter += num;
+            updateDisplay();
+            clickSound.play();
+        }else {
+        // Optional: alert or feedback for invalid input
+        alert("Please enter a valid number to add .");
+        }
+        document.querySelector("#num").value = '';
+    };
+
+    document.querySelector("#rem-num").onclick = () => {
+        const input = document.querySelector("#num").value.trim();
+
+        if (input === ".") {
+            counter = 0;
+            updateDisplay();
+            clearSound.play();
+        } else {
+            const num = parseInt(input);
+            if (!isNaN(num)) {
+                counter = Math.max(0, counter - num);
+                updateDisplay();
+                clearSound.play();
+            } else {
+                alert("Please enter a valid number to remove.");
+            }
+        }
+
+        document.querySelector("#num").value = '';
+    };
+
+});
+</script>
+</head>
+<body>
+<h1>0</h1>
+<button id="increase">+</button>
+<button id="decrease">-</button>
+<button id="clear">Clear</button>
+<input id="num" autofocus placeholder="Enter number" />
+<button id="add-num">Add Number</button>
+<button id="rem-num">Remove Number</button>
+</body>
+</html>

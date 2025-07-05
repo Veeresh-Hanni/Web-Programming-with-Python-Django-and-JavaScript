@@ -7,7 +7,6 @@ if(!localStorage.getItem('counter')){
 let counter = localStorage.getItem('counter');
 
 
-
 function count(){
     
     counter++;

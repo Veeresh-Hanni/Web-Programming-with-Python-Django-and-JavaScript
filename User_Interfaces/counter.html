@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+        <!-- Include React and ReactDOM -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Include Babel for JSX transformation in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+
+    <script type="text/babel">
+
+        function App(){
+            const [count,setConut] = React.useState(0);
+            return (
+                <div>
+                    <div>{count}</div>
+                    <button onClick={()=>{
+                        setConut(count + 1);
+                    }}>Count</button>
+                    <button onClick={()=> {
+                        if(count >0){
+                            setConut(count-1);
+                        }
+                    }} >Decrease</button>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+</html>

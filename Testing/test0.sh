@@ -1,0 +1,8 @@
+python -c "from test0 import test_isprime; test_isprime(1,False)"
+python -c "from test0 import test_isprime; test_isprime(2,True)"
+python -c "from test0 import test_isprime; test_isprime(8,False)"
+python -c "from test0 import test_isprime; test_isprime(1,False)"
+python -c "from test0 import test_isprime; test_isprime(25,False)"
+python -c "from test0 import test_isprime; test_isprime(28,False)"
+python -c "from test0 import test_isprime; test_isprime(30,False)"
+python -c "from test0 import test_isprime; test_isprime(32,False)"
